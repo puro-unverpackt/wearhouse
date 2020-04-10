@@ -1,26 +1,32 @@
-#!/usr/bin/env sh
+#!/bin/bash
+project_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+echo $project_path
 
 # abort on error
 set -e
 
 ## FRONTEND
 # navigate into frontend
-cd ./frontend
+frontend_path="${project_path}/frontend"
+echo $frontend_path
+cd $frontend_path
 
 # build into dist
 npm ci
 npm run build
 
 # move the build to the backend
-rm -rf ../backend/wwwroot
-mv ./dist ../backend/wwwroot
+wwwroot_path="${project_path}/backend/wwwroot"
+echo $wwwroot_path
 
-#navigate back to main
-cd ..
+rm -rf $wwwroot_path
+mv ./dist $wwwroot_path
 
 ## BACKEND
 # navigate into backend
-cd ./backend
+backend_path="${project_path}/backend"
+echo $backend_path
+cd $backend_path
 
 # start backend
 dotnet run
