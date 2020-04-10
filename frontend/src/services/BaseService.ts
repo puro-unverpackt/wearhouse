@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 export const JSON_WEB_TOKEN = 'JsonWebToken';
 
 export default class BaseServie {
-    protected BASE_URL: string = 'http://localhost:9000/v0.1.0';
+    protected BASE_URL: string = 'http://burkhalter.internet-box.ch:31800/v0.1.0';
 
     protected deleteConfig: AxiosRequestConfig;
     protected getConfig: AxiosRequestConfig;
