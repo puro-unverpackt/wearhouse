@@ -16,15 +16,15 @@ echo $frontend_path
 cd $frontend_path
 
 # build into dist
-#npm ci
-#npm run build
+npm ci
+npm run build
 
 # move the build to the backend
 wwwroot_path="${project_path}/backend/wwwroot"
 echo $wwwroot_path
 
-#rm -rf $wwwroot_path
-#mv ./dist $wwwroot_path
+rm -rf $wwwroot_path
+mv ./dist $wwwroot_path
 
 ## BACKEND
 # navigate into backend
