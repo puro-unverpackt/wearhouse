@@ -1,7 +1,7 @@
 <template>
-    <v-data-table class="elevation-1" :headers="headers" hide-default-footer :items="products">
+    <v-data-table class="elevation-1" :headers="headers" hide-default-footer :items="products" tile>
         <template v-slot:top>
-            <v-toolbar class="secondary" flat>
+            <v-toolbar flat>
                 <v-toolbar-title v-text="$t('areas.products.title')" />
                 <v-spacer />
                 <create-dialog />
@@ -9,7 +9,7 @@
         </template>
 
         <template v-slot:item.actions="{ item }">
-            <edit-dialog :value="item" />
+            <edit-dialog :item="item" />
 
             <delete-confirm :on-delete="deleteProduct" :on-delete-parameter="item" />
         </template>

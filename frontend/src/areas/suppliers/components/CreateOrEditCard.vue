@@ -5,7 +5,7 @@
         </v-card-title>
 
         <ValidationObserver ref="observer" v-slot="{ invalid }">
-            <v-form ref="form" @submit.prevent="save">
+            <v-form lazy-validation @submit.prevent="save">
                 <v-card-text>
                     <v-container>
                         <v-row>
@@ -61,7 +61,7 @@ export default {
     methods: {
         close() {
             this.$emit("close");
-            this.$refs.form.reset();
+            this.$refs.observer.reset();
         }
     },
     props: {

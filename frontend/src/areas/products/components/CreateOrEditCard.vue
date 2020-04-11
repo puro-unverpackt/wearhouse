@@ -5,10 +5,10 @@
         </v-card-title>
 
         <ValidationObserver ref="observer" v-slot="{ invalid }">
-            <v-form ref="form" @submit.prevent="save">
+            <v-form lazy-validation ref="form" @submit.prevent="save">
                 <v-card-text>
                     <v-container>
-                        <v-row>
+                        <v-row cols="12">
                             <v-col sm="6">
                                 <ValidationProvider
                                     v-slot="{ errors }"
@@ -39,7 +39,9 @@
                                     />
                                 </ValidationProvider>
                             </v-col>
+                        </v-row>
 
+                        <v-row cols="12">
                             <v-col sm="12">
                                 <ValidationProvider
                                     v-slot="{ errors }"
@@ -55,12 +57,14 @@
                                         item-value="id"
                                         :label="$t('areas.products.supplier')"
                                         required
-                                        v-model="value.supplier.id"
+                                        v-model="value.supplierId"
                                         @enter="save"
                                     />
                                 </ValidationProvider>
                             </v-col>
+                        </v-row>
 
+                        <v-row cols="12">
                             <v-col sm="6">
                                 <ValidationProvider
                                     v-slot="{ errors }"
@@ -89,7 +93,9 @@
                                     />
                                 </ValidationProvider>
                             </v-col>
+                        </v-row>
 
+                        <v-row cols="12">
                             <v-col sm="6">
                                 <ValidationProvider
                                     v-slot="{ errors }"
@@ -171,12 +177,11 @@ export default {
             initialize: INITIALIZE
         }),
         close() {
-            this.$refs.form.reset();
             this.$emit("close");
         }
     },
     mounted: function() {
-        this.$refs.form.reset();
+        this.$refs.observer.reset();
         this.initialize();
     },
     props: {

@@ -1,5 +1,7 @@
+import { ProductDto } from '../types/productDto';
+
 export interface IProductsState {
-    products: Array<any>;
+    products: Array<ProductDto>;
 }
 
 export const state: IProductsState = {

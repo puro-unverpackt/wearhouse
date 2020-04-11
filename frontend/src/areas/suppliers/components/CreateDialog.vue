@@ -1,9 +1,10 @@
 <template>
-    <v-dialog v-model="dialog" max-width="500px">
+    <v-dialog max-width="750px" persistent v-model="dialog">
         <template v-slot:activator="{ on }">
             <v-btn
                 color="primary"
                 class="mb-2"
+                tile
                 v-on="on"
                 v-text="$t('areas.suppliers.create.title')"
             />
@@ -38,15 +39,10 @@ export default {
         ...mapActions({
             create: CREATE_SUPPLIERS
         }),
-
         close: function() {
             this.dialog = false;
-
-            setTimeout(() => {
-                this.supplier = Object.assign({});
-            }, 300);
+            this.supplier = Object.assign({});
         },
-
         save: function() {
             this.create(this.supplier);
             this.close();
