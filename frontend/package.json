@@ -1,15 +1,16 @@
 {
     "name": "wearhouse",
     "version": "0.1.0",
-    "private": true,
+    "private": false,
     "scripts": {
-        "serve": "vue-cli-service serve",
+        "serve": "vue-cli-service serve --mode development",
         "build": "vue-cli-service build"
     },
     "dependencies": {
         "@mdi/font": "^5.0.45",
         "axios": "^0.19.2",
         "core-js": "^3.6.4",
+        "dotenv": "latest",
         "typescript": "^3.8.3",
         "vee-validate": "^3.2.5",
         "vue": "^2.6.11",
@@ -23,6 +24,8 @@
         "@vue/cli-plugin-router": "~4.2.0",
         "@vue/cli-plugin-vuex": "~4.2.0",
         "@vue/cli-service": "~4.2.0",
+        "@vue/cli-plugin-typescript": "^3.0.1",
+        "@types/dotenv": "^6.1.0",
         "sass": "^1.19.0",
         "sass-loader": "^8.0.0",
         "vue-cli-plugin-vuetify": "~2.0.5",

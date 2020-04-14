@@ -1,9 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
-
 export const JSON_WEB_TOKEN = 'JsonWebToken';
 
 export default class BaseServie {
-    protected BASE_URL: string = 'http://burkhalter.internet-box.ch:31800/v0.1.0';
+    protected BASE_URL: string = process.env.VUE_APP_BASE_URL;
 
     protected deleteConfig: AxiosRequestConfig;
     protected getConfig: AxiosRequestConfig;
@@ -11,7 +10,8 @@ export default class BaseServie {
     protected putConfig: AxiosRequestConfig;
 
     constructor() {
-        console.debug('baseService::constructor');
+        console.debug('baseService::constructor', this.BASE_URL);
+
         const token = localStorage.getItem(JSON_WEB_TOKEN);
 
         this.deleteConfig = {
