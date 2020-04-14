@@ -16,6 +16,7 @@ echo $frontend_path
 cd $frontend_path
 
 # build into dist
+# tsc ./src/main.ts
 npm ci
 npm run build
 
@@ -40,4 +41,4 @@ then
 fi
 
 # start application
-dotnet run
+dotnet run --launch-profile Production
