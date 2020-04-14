@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 export const JSON_WEB_TOKEN = 'JsonWebToken';
 
 export default class BaseServie {
-    protected BASE_URL: string = process.env.VUE_APP_BASE_URL;
+    protected BASE_URL: string | undefined = process.env.VUE_APP_BASE_URL;
 
     protected deleteConfig: AxiosRequestConfig;
     protected getConfig: AxiosRequestConfig;
@@ -40,7 +40,7 @@ export default class BaseServie {
         };
     }
 
-    protected async delete(url: string, config: AxiosRequestConfig = this.deleteConfig) {
+    protected async DELETE(url: string, config: AxiosRequestConfig = this.deleteConfig) {
         const encodedUrl = encodeURI(url);
         console.info('API Call:=', url);
 
@@ -53,7 +53,7 @@ export default class BaseServie {
         }
     }
 
-    protected async get(url: string, config: AxiosRequestConfig = this.getConfig) {
+    protected async GET(url: string, config: AxiosRequestConfig = this.getConfig) {
         const encodedUrl = encodeURI(url);
         console.info('API Call:=', url);
 
@@ -66,7 +66,7 @@ export default class BaseServie {
         }
     }
 
-    protected async post(url: string, data: any, config: AxiosRequestConfig = this.postConfig) {
+    protected async POST(url: string, data: any, config: AxiosRequestConfig = this.postConfig) {
         const encodedUrl = encodeURI(url);
         console.info('API Call:=', url, 'data', data);
         try {
@@ -78,7 +78,7 @@ export default class BaseServie {
         }
     }
 
-    protected async put(url: string, data: any, config: AxiosRequestConfig = this.putConfig) {
+    protected async PUT(url: string, data: any, config: AxiosRequestConfig = this.putConfig) {
         const encodedUrl = encodeURI(url);
         console.info('API Call:=', url, 'data', data);
         try {

@@ -16,23 +16,23 @@ export default class ProductsService extends BaseService implements IProductsSer
     }
 
     delete(product_id: Number): Promise<Boolean> {
-        return super.delete(`${this.PRODUCTS_URL}/${product_id}`);
+        return super.DELETE(`${this.PRODUCTS_URL}/${product_id}`);
     }
 
     get_all(): Promise<ProductDto[]> {
-        return super.get(this.PRODUCTS_URL);
+        return super.GET(this.PRODUCTS_URL);
     }
 
     get(id: Number): Promise<ProductDto> {
-        return super.get(`${this.PRODUCTS_URL}/${id}`);
+        return super.GET(`${this.PRODUCTS_URL}/${id}`);
     }
 
     post(product: ProductCreateDto): Promise<ProductDto> {
-        return super.post(this.PRODUCTS_URL, product);
+        return super.POST(this.PRODUCTS_URL, product);
     }
 
     put(product: ProductEditDto): Promise<ProductDto> {
-        return super.put(`${this.PRODUCTS_URL}/${product.id}`, product);
+        return super.PUT(`${this.PRODUCTS_URL}/${product.id}`, product);
     }
 }
 

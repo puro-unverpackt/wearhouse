@@ -12,19 +12,19 @@ export default class SuppliersService extends BaseService implements ISuppliersS
     }
 
     delete(supplier_id: any): Promise<any> {
-        return super.delete(`${this.SUPPLIERS_URL}/${supplier_id}`);
+        return super.DELETE(`${this.SUPPLIERS_URL}/${supplier_id}`);
     }
 
     get(): Promise<any[]> {
-        return super.get(this.SUPPLIERS_URL);
+        return super.GET(this.SUPPLIERS_URL);
     }
 
     post(supplier: any): Promise<any> {
-        return super.post(this.SUPPLIERS_URL, supplier);
+        return super.POST(this.SUPPLIERS_URL, supplier);
     }
 
     put(supplier: any): Promise<any> {
-        return super.put(`${this.SUPPLIERS_URL}/${supplier.id}`, supplier);
+        return super.PUT(`${this.SUPPLIERS_URL}/${supplier.id}`, supplier);
     }
 }
 

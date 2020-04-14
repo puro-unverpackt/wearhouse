@@ -13,7 +13,7 @@ export default new Vuetify({
     theme: {
         themes: {
             dark: {
-                primary: colors.pink,
+                primary: colors.pink.base,
                 // secondary: not set (dark),
                 // background: not set (dark),
                 text: {
@@ -29,8 +29,8 @@ export default new Vuetify({
                 success: colors.green.accent3
             },
             light: {
-                primary: colors.pink,
-                secondary: colors.pink,
+                primary: colors.pink.base,
+                secondary: colors.pink.base,
                 background: colors.amber.lighten5,
                 text: {
                     content: colors.grey.darken4,
