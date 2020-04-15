@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Deploy
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -17,15 +17,38 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@deploy
       
     - name: start deploy
       run: echo start deploy
-      
-    #- name: copy to server
-      #uses: contention/action-rsync-deploy@master
+
+    # Frontend
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - run: npm ci  
+    - run: npm run build
+
+    # Backend
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: copy to server
+      uses: contention/action-rsync-deploy@master
       #with:
         #key: asdf
         #secrets: ["DEPLOY_KEY"]
