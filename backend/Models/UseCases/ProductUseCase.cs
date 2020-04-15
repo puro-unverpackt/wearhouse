@@ -11,8 +11,6 @@ namespace webapp_backend_dotnet.Model.UseCases
 
         public Product Create(ProductCreateDto productCreateDto)
         {
-            Supplier supplier = ModelContext.Suppliers.Find(productCreateDto.SupplierId);
-
             Product product = new Product();
             product.AmountFactor = productCreateDto.AmountFactor;
             product.AmountUnit = productCreateDto.AmountUnit;
@@ -20,7 +18,7 @@ namespace webapp_backend_dotnet.Model.UseCases
             product.Number = productCreateDto.Number;
             product.PurchasingPrice = productCreateDto.PurchasingPrice;
             product.SellingPrice = productCreateDto.SellingPrice;
-            product.Supplier = supplier;
+            product.Supplier = ModelContext.Suppliers.Find(productCreateDto.SupplierId);
 
             ModelContext.Products.Add(product);
             ModelContext.SaveChanges();

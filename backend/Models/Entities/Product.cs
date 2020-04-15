@@ -6,7 +6,7 @@ namespace webapp_backend_dotnet.Model.Entities
 {
     public class Product
     {
-        public int AmountFactor { get; set; }
+        public int? AmountFactor { get; set; }
         [MaxLength(1000)]
         public string AmountUnit { get; set; }
         [Key]
@@ -18,8 +18,8 @@ namespace webapp_backend_dotnet.Model.Entities
         [Required]
         [MaxLength(10)]
         public string Number { get; set; }
-        public int PurchasingPrice { get; set; }
-        public int SellingPrice { get; set; }
+        public int? PurchasingPrice { get; set; }
+        public int? SellingPrice { get; set; }
 
 
 
