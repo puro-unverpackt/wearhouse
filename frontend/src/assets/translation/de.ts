@@ -13,6 +13,7 @@ export default {
         login: 'Login',
         logout: 'Logout',
         name: 'Name',
+        next: 'Weiter',
         number: 'Nummer',
         repeat: 'Wiederholen',
         save: 'Speichern',
@@ -36,6 +37,26 @@ export default {
     /// AREAS ///
     /////////////
     areas: {
+        // Orders
+        orders: {
+            wizard: {
+                overview: {
+                    overview: 'Bestellübersicht'
+                },
+                products: {
+                    products: '@:areas.products.products',
+                    select: 'Wählen Sie die @:areas.products.products aus',
+                    selected: '@:areas.products.products {products}'
+                },
+                suppliers: {
+                    select: 'Wählen Sie einen @:areas.suppliers.supplier aus',
+                    selected: '@:areas.suppliers.supplier {supplier}',
+                    suppliers: '@:areas.suppliers.suppliers'
+                },
+                wizard: 'Bestellung'
+            }
+        },
+
         // Products
         products: {
             amountFactor: 'Stück grösse',
@@ -51,6 +72,7 @@ export default {
             product: 'Produkt',
             products: 'Produkte',
             purchasingPrice: 'Einkaufspreis',
+            search: 'Produkt suchen',
             sellingPrice: 'Verkaufspreis',
             supplier: '@:areas.suppliers.supplier',
             title: '@:areas.products.products'
@@ -65,6 +87,7 @@ export default {
                 title: 'Lieferant beabeiten'
             },
             name: '@:common.name',
+            search: 'Lieferant suchen',
             supplier: 'Lieferant',
             suppliers: 'Lieferanten',
             title: '@:areas.suppliers.suppliers'

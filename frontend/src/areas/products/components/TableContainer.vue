@@ -1,16 +1,34 @@
 <template>
-    <v-data-table class="elevation-1" :headers="headers" hide-default-footer :items="products" tile>
+    <v-data-table
+        class="elevation-1"
+        :headers="headers"
+        hide-default-footer
+        item-key="number"
+        :items="products"
+        :search="search"
+        tile
+    >
         <template v-slot:top>
             <v-toolbar flat>
                 <v-toolbar-title v-text="$t('areas.products.title')" />
                 <v-spacer />
-                <create-dialog />
+                <v-text-field
+                    v-model="search"
+                    append-icon="mdi-magnify"
+                    :label="$t('areas.products.search')"
+                    single-line
+                    hide-details
+                />
             </v-toolbar>
+        </template>
+
+        <!-- actions -->
+        <template v-slot:header.actions="{}">
+            <create-dialog />
         </template>
 
         <template v-slot:item.actions="{ item }">
             <edit-dialog :item="item" />
-
             <delete-confirm :on-delete="deleteProduct" :on-delete-parameter="item" />
         </template>
     </v-data-table>
@@ -69,10 +87,10 @@ export default {
                 {
                     align: "end",
                     sortable: false,
-                    text: this.$t("common.actions"),
                     value: "actions"
                 }
-            ]
+            ],
+            search: ""
         };
     },
     methods: {

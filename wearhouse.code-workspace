@@ -33,7 +33,6 @@
             "build/": true,
 
             "obj/": true,
-            "Properties/": true,
             ".vscode/": true
             // File (e.g. "somefile": true)
         },

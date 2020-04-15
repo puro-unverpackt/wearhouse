@@ -33,14 +33,19 @@ export default {
         fixed: false,
         navigation: [
             {
+                icon: "mdi-cart",
+                title: "areas.orders.wizard.wizard",
+                to: { name: "orders-wizard" }
+            },
+            {
                 icon: "mdi-domain",
                 title: "areas.suppliers.suppliers",
-                to: "suppliers"
+                to: { name: "suppliers" }
             },
             {
                 icon: "mdi-food-apple",
                 title: "areas.products.products",
-                to: "products"
+                to: { name: "products" }
             }
 
             // cash-register

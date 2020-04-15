@@ -6,6 +6,14 @@ Vue.use(VueRouter);
 const routes = [
     { path: '/', name: 'Home', redirect: { name: 'suppliers' } },
     {
+        path: '/order/wizard',
+        name: 'orders-wizard',
+        // route level code-splitting
+        // this generates a separate chunk (orders.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "orders" */ '../areas/orders/views/Wizard.vue')
+    },
+    {
         path: '/suppliers',
         name: 'suppliers',
         // route level code-splitting

@@ -71,11 +71,13 @@ namespace webapp_backend_dotnet
             app.UseStaticFiles();
             app.UseCors(_allowedSpecificOrigins);
 
-            app.UseHttpsRedirection();
+            if (env.IsProduction())
+            {
+                // app.UseHttpsRedirection();
+                // app.UseAuthorization();
+            }
 
             app.UseRouting();
-
-            // app.UseAuthorization();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

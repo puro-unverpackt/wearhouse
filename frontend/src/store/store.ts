@@ -12,6 +12,9 @@ export const RootState: IRootState = {
 };
 
 // Modules
+import orders from '../areas/orders/store/store';
+import { ORDERS } from '../areas/orders/store/name';
+
 import products from '../areas/products/store/store';
 import { PRODUCTS } from '../areas/products/store/name';
 
@@ -20,6 +23,7 @@ import { SUPPLIERS } from '../areas/suppliers/store/name';
 
 export const store = new Vuex.Store({
     modules: {
+        [ORDERS]: orders,
         [PRODUCTS]: products,
         [SUPPLIERS]: suppliers
     },

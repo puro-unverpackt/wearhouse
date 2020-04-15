@@ -9,22 +9,23 @@
         }
     },
     "profiles": {
-        "Production": {
-            "commandName": "Project",
-            "launchBrowser": false,
-            "use64Bit": true,
-            "applicationUrl": "https://localhost:31800;https://31.7.97.115:31800",
-            "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Production"
-            }
-        },
         "Development": {
             "commandName": "Project",
             "launchBrowser": false,
             "use64Bit": true,
-            "applicationUrl": "https://localhost:31800",
+            "applicationUrl": "http://localhost:31800",
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "Production": {
+            "commandName": "Project",
+            "launchBrowser": false,
+            "use64Bit": true,
+            "applicationUrl": "http://localhost:31800;http://31.7.97.115:31800",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Production",
+                "ASPNETCORE_HTTPS_PORT": "31800"
             }
         }
     }
