@@ -23,10 +23,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@deploy
+    #- uses: actions/checkout@deploy
       
-    - name: start deploy
-      run: echo start deploy
+    #- name: start deploy
+      #run: echo start deploy
 
     # Frontend
     #- name: Use Node.js ${{ matrix.node-version }}
