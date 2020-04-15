@@ -17,9 +17,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x]
+    #strategy:
+      #matrix:
+        #node-version: [10.x, 12.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -29,26 +29,26 @@ jobs:
       run: echo start deploy
 
     # Frontend
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+    #- name: Use Node.js ${{ matrix.node-version }}
+      #uses: actions/setup-node@v1
+      #with:
+        #node-version: ${{ matrix.node-version }}
 
-    - run: npm ci  
-    - run: npm run build
+    #- run: npm ci  
+    #- run: npm run build
 
     # Backend
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.101
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
+    #- name: Setup .NET Core
+      #uses: actions/setup-dotnet@v1
+      #with:
+        #dotnet-version: 3.1.101
+    #- name: Install dependencies
+      #run: dotnet restore
+    #- name: Build
+      #run: dotnet build --configuration Release --no-restore
 
-    - name: copy to server
-      uses: contention/action-rsync-deploy@master
+    #- name: copy to server
+      #uses: contention/action-rsync-deploy@master
       #with:
         #key: asdf
         #secrets: ["DEPLOY_KEY"]
