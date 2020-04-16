@@ -9,8 +9,11 @@ namespace webapp_backend_dotnet.Interfaces.Dtos
 
         public SupplierDto(Supplier supplier)
         {
-            Id = supplier.Id;
-            Name = supplier.Name;
+            if (supplier != null)
+            {
+                Id = supplier.Id;
+                Name = supplier.Name;
+            }
         }
     }
 }

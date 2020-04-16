@@ -16,6 +16,7 @@
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/webapp-backend-dotnet.dll",
             "request": "launch",
+            "requireExactSource": false,
             "stopAtEntry": false,
             "type": "coreclr"
         }

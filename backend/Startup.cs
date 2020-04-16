@@ -39,12 +39,14 @@ namespace webapp_backend_dotnet
             //////////////
             // UseCases //
             //////////////
+            services.AddScoped<IOrderUseCase, OrderUseCase>();
             services.AddScoped<IProductUseCase, ProductUseCase>();
             services.AddScoped<ISupplierUseCase, SupplierUseCase>();
 
             //////////////
             // Services //
             //////////////
+            services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ISupplierService, SupplierService>();
 

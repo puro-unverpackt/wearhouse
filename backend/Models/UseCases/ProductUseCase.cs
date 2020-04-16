@@ -13,7 +13,6 @@ namespace webapp_backend_dotnet.Model.UseCases
         {
             Product product = new Product();
             product.AmountFactor = productCreateDto.AmountFactor;
-            product.AmountUnit = productCreateDto.AmountUnit;
             product.Name = productCreateDto.Name;
             product.Number = productCreateDto.Number;
             product.PurchasingPrice = productCreateDto.PurchasingPrice;
@@ -39,7 +38,6 @@ namespace webapp_backend_dotnet.Model.UseCases
             Product product = Get(productEditDto.Id);
 
             product.AmountFactor = productEditDto.AmountFactor;
-            product.AmountUnit = productEditDto.AmountUnit;
             product.Name = productEditDto.Name;
             product.Number = productEditDto.Number;
             product.PurchasingPrice = productEditDto.PurchasingPrice;
