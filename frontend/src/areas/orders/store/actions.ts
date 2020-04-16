@@ -6,17 +6,19 @@ import { ordersService } from '../services/OrdersService';
 import { ORDERS_ARRAY } from './mutations';
 import { ORDERS } from './name';
 
+import router from '@/router';
+
 export const INITIALIZE = 'getSuppliers';
 export const CREATE_ORDERS = 'createSuppliers';
 export const DELETE_ORDERS = 'deleteSuppliers';
 export const EDIT_ORDERS = 'editSuppliers';
 
 export const actions: ActionTree<IOrdersState, IRootState> = {
-    [CREATE_ORDERS]({ dispatch }: any, order: any) {
-        console.debug(ORDERS + '::' + CREATE_ORDERS, 'order', order);
+    [CREATE_ORDERS]({}: any, order: any) {
+        console.debug(ORDERS + '::' + CREATE_ORDERS);
 
-        ordersService.post(order).then(() => {
-            dispatch(INITIALIZE);
+        ordersService.post(order).then((response) => {
+            router.push({ name: 'orders-wizard', params: { id: response.id } });
         });
     },
     [DELETE_ORDERS]({ dispatch }: any, order: any) {
@@ -36,7 +38,7 @@ export const actions: ActionTree<IOrdersState, IRootState> = {
     [INITIALIZE]({ commit }: any) {
         console.debug(ORDERS + '::' + INITIALIZE);
 
-        ordersService.get().then((response: any[]) => {
+        ordersService.get_all().then((response: any[]) => {
             commit(ORDERS_ARRAY, response);
         });
     }

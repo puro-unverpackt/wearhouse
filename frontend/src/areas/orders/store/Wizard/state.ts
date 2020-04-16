@@ -1,7 +1,13 @@
 export interface IOrdersWizardState {
-    step: Number;
+    id: number;
+    step: number;
+    products: Array<any>;
+    supplier: any;
 }
 
 export const state: IOrdersWizardState = {
-    step: 1
+    id: 0,
+    step: 0,
+    products: [],
+    supplier: {}
 };

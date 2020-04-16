@@ -13,10 +13,32 @@ import Vue from "vue";
 
 import WizardStepper from "../components/wizard/Stepper.vue";
 
+import { createNamespacedHelpers } from "vuex";
+
+import { ORDERS } from "../store/name";
+import { ORDERS_WIZARD } from "../store/Wizard/name";
+
+import { INITIALIZE } from "../store/Wizard/actions";
+const { mapActions } = createNamespacedHelpers(`${ORDERS}/${ORDERS_WIZARD}`);
+
 export default Vue.extend({
-    name: "OrdersWizardStepper",
+    name: "OrdersWizard",
     components: {
         WizardStepper
+    },
+    methods: {
+        ...mapActions({
+            initialize: INITIALIZE
+        })
+    },
+    mounted: function() {
+        this.initialize(this.id);
+    },
+    props: {
+        id: {
+            type: Number,
+            required: true
+        }
     }
 });
 </script>

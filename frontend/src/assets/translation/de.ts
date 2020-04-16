@@ -8,6 +8,7 @@ export default {
             title: 'puro-unverpackt'
         },
         cancel: 'Abbrechen',
+        date: 'Datum',
         delete: 'Löschen',
         language: 'Sprache',
         login: 'Login',
@@ -17,6 +18,7 @@ export default {
         number: 'Nummer',
         repeat: 'Wiederholen',
         save: 'Speichern',
+        state: 'Status',
         time: 'Zeit',
         title: 'Title'
     },
@@ -39,18 +41,32 @@ export default {
     areas: {
         // Orders
         orders: {
+            date: '@:common.date',
+            orders: 'Bestellungen',
+            search: 'Bestellung suchen',
+            state: '@:common.state',
+            title: '@:areas.orders.orders',
+
+            create: {
+                title: 'Neue Bestellung'
+            },
+
             wizard: {
                 overview: {
                     overview: 'Bestellübersicht'
                 },
                 products: {
+                    amountFactor: '@:areas.products.amountFactor',
+                    amountQuantity: 'Anzahl',
+                    name: '@:areas.products.name',
                     products: '@:areas.products.products',
+                    purchasingPrice: '@:areas.products.purchasingPrice',
                     select: 'Wählen Sie die @:areas.products.products aus',
-                    selected: '@:areas.products.products {products}'
+                    selected: '@:areas.products.products ({products})'
                 },
                 suppliers: {
                     select: 'Wählen Sie einen @:areas.suppliers.supplier aus',
-                    selected: '@:areas.suppliers.supplier {supplier}',
+                    selected: '@:areas.suppliers.supplier ({supplier})',
                     suppliers: '@:areas.suppliers.suppliers'
                 },
                 wizard: 'Bestellung'
@@ -59,8 +75,7 @@ export default {
 
         // Products
         products: {
-            amountFactor: 'Stück grösse',
-            amountUnit: 'Einheit',
+            amountFactor: 'Stück grösse (kg)',
             create: {
                 title: 'Neues Produkt'
             },

@@ -1,11 +1,13 @@
 <template>
-    <v-stepper v-model="step" vertical>
+    <v-stepper v-model="actual_step" vertical>
         <step-supplier :step="1" />
         <step-products :step="2" />
+        <step-overview :step="3" />
     </v-stepper>
 </template>
 
 <script>
+import StepOverview from "./Overview.vue";
 import StepProducts from "./Products.vue";
 import StepSupplier from "./Supplier.vue";
 
@@ -18,12 +20,13 @@ const { mapGetters } = createNamespacedHelpers(`${ORDERS}/${ORDERS_WIZARD}`);
 export default {
     name: "OrdersWizardStepper",
     components: {
+        StepOverview,
         StepProducts,
         StepSupplier
     },
     computed: {
         ...mapGetters({
-            step: STEP
+            actual_step: STEP
         })
     }
 };

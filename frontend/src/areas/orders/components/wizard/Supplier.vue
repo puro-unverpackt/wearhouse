@@ -5,7 +5,9 @@
         </v-stepper-step>
 
         <v-stepper-step :complete="activ_step > step" :step="step" v-else>
-            <span v-text="$t('areas.orders.wizard.suppliers.selected', { supplier: supplier.id })" />
+            <span
+                v-text="$t('areas.orders.wizard.suppliers.selected', { supplier: activ_supplier.name })"
+            />
         </v-stepper-step>
 
         <v-stepper-content :step="step">
@@ -25,18 +27,17 @@
                             item-value="id"
                             :label="$t('areas.orders.wizard.suppliers.suppliers')"
                             required
-                            v-model="supplier.id"
+                            v-model="supplierId"
                         />
                     </ValidationProvider>
                 </v-form>
 
-                <!-- todo <v-btn text v-text="$t('common.cancel')" />  -->
                 <v-btn
                     color="green darken-1"
                     :disabled="invalid"
                     text
                     v-text="$t('common.next')"
-                    @click="nextStep"
+                    @click="save"
                 />
             </ValidationObserver>
         </v-stepper-content>
@@ -54,8 +55,8 @@ import { createNamespacedHelpers } from "vuex";
 
 import { ORDERS } from "../../store/name";
 import { ORDERS_WIZARD } from "../../store/Wizard/name";
-import { NEXT_STEP } from "../../store/Wizard/actions";
-import { STEP } from "../../store/Wizard/getters";
+import { SET_SUPPLIER } from "../../store/Wizard/actions";
+import { STEP, SUPPLIER } from "../../store/Wizard/getters";
 const { mapActions, mapGetters } = createNamespacedHelpers(
     `${ORDERS}/${ORDERS_WIZARD}`
 );
@@ -68,6 +69,8 @@ const {
     mapGetters: mapGettersSupplier
 } = createNamespacedHelpers(SUPPLIERS);
 
+import { SupplierDto } from "../../../suppliers/types/supplierDto";
+
 export default Vue.extend({
     name: "OrdersWizardSupplier",
     components: {
@@ -76,7 +79,8 @@ export default Vue.extend({
     },
     computed: {
         ...mapGetters({
-            activ_step: STEP
+            activ_step: STEP,
+            activ_supplier: SUPPLIER
         }),
         ...mapGettersSupplier({
             suppliers: ALL_SUPPLIERS
@@ -84,11 +88,18 @@ export default Vue.extend({
     },
     methods: {
         ...mapActions({
-            nextStep: NEXT_STEP
+            setSupplier: SET_SUPPLIER
         }),
         ...mapActionsSupplier({
             initialize: INITIALIZE
-        })
+        }),
+        save: function() {
+            this.setSupplier(
+                this.suppliers.find(
+                    (element: SupplierDto) => element.id === this.supplierId
+                )
+            );
+        }
     },
     mounted: function() {
         // this.$refs.observer.reset();
@@ -96,7 +107,7 @@ export default Vue.extend({
     },
     data() {
         return {
-            supplier: {}
+            supplierId: 0
         };
     },
     props: {

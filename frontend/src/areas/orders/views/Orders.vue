@@ -11,10 +11,10 @@
 <script>
 import TableContainer from "../components/TableContainer.vue";
 
-import { SUPPLIERS } from "../store/name";
+import { ORDERS } from "../store/name";
 import { INITIALIZE } from "../store/actions";
 import { createNamespacedHelpers } from "vuex";
-const { mapActions } = createNamespacedHelpers(SUPPLIERS);
+const { mapActions } = createNamespacedHelpers(ORDERS);
 
 export default {
     components: {

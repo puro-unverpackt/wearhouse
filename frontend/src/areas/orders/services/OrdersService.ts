@@ -11,11 +11,15 @@ export default class OrdersService extends BaseService implements IOrdersService
         this.ORDERS_URL = `${this.BASE_URL}/orders`;
     }
 
-    delete(order_id: any): Promise<any> {
+    delete(order_id: Number): Promise<any> {
         return super.DELETE(`${this.ORDERS_URL}/${order_id}`);
     }
 
-    get(): Promise<any[]> {
+    get(order_id: Number): Promise<any> {
+        return super.GET(`${this.ORDERS_URL}/${order_id}`);
+    }
+
+    get_all(): Promise<any[]> {
         return super.GET(this.ORDERS_URL);
     }
 
